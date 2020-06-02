@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="col my-5 text-center">
+        <h5>Add an employee</h5>
+    </div>
+
+    <form [formGroup]="workerForm">
+
+        <div class="row mb-3">
+            <div class="col-2"></div>
+            <label for="workerid" class="col-sm-2 col-form-label">Id: </label>
+            <div class="col-6">
+                <input type="number" class="form-control" formControlName="id" id="workerid" placeholder="id">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2"></div>
+            <label for="workersurname" class="col-sm-2 col-form-label">Surname: </label>
+            <div class="col-6">
+                <input type="text" class="form-control" formControlName="surname" id="workersurname" placeholder="Surname">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2"></div>
+            <label for="workername" class="col-sm-2 col-form-label">Name: </label>
+            <div class="col-6">
+                <input type="text" class="form-control" formControlName="name" id="workername" placeholder="Name">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2"></div>
+            <label for="workermiddlename" class="col-sm-2 col-form-label">Middle name: </label>
+            <div class="col-6">
+                <input type="text" class="form-control" formControlName="middlename" id="workermiddlename" placeholder="Middle name">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2"></div>
+            <label for="workerphone" class="col-sm-2 col-form-label">Phone: </label>
+            <div class="col-6">
+                <input type="text" class="form-control" formControlName="phone" id="workerphone" [textMask]="{mask: phone}" placeholder="Phone">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2"></div>
+            <label for="workeremail" class="col-sm-2 col-form-label">E-mail: </label>
+            <div class="col-6">
+                <input type="text" class="form-control" formControlName="email" id="workeremail" placeholder="E-mail">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2"></div>
+            <label for="workerbirthday" class="col-sm-2 col-form-label">Birthday: </label>
+            <div class="col-6">
+                <input type="date" class="form-control" formControlName="birthday" id="workerbirthday" placeholder="Birthday">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2"></div>
+            <label for="workerdepartament" class="col-sm-2 col-form-label">Departament: </label>
+            <div class="col-6">
+                <select class="custom-select" formControlName="departament" id="workerdepartament">
+                    <option [ngValue]="mworkerDepartament.it">IT-departament</option>
+                    <option [ngValue]="mworkerDepartament.sales">Sales departament</option>
+                    <option [ngValue]="mworkerDepartament.delivery">Delivery departament</option>
+                    <option [ngValue]="mworkerDepartament.legal">Legal departament</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <button class="btn btn-primary mr-4" [disabled]="workerForm.invalid" (click)="onSave()">Save</button>
+            <button class="btn btn-danger" *ngIf="id != null" (click)="onDelete()">Delete</button>
+        </div>
+    </form>
+</div>

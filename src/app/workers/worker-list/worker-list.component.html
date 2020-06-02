@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="row my-3">
+        <div class="col-3"></div>
+        <div class="col-4">
+            <input type="text" class="form-control" [(ngModel)]="findSn" placeholder="Find surname name">
+        </div>
+        <div class="col-2">
+            <button class="btn btn-outline-info mr-2" (click)="sortById()">Sort id</button>
+            <button class="btn btn-outline-info" (click)="sortByAge()">Sort age</button>
+        </div>
+    </div>
+
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Name</th>
+                <th scope="col">Middlename</th>
+                <th scope="col">Phone</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Birthgay</th>
+                <th scope="col">Departament</th>
+                <th scope="col">
+                    <button class="btn btn-primary" (click)="onAddProfile()">Add worker</button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let worker of workers | workerSn: findSn">
+                <th scope="row">{{worker.id}}</th>
+                <td>{{worker.surname}}</td>
+                <td>{{worker.name}}</td>
+                <td>{{worker.middlename}}</td>
+                <td>{{worker.phone}}</td>
+                <td>{{worker.email}}</td>
+                <td>{{worker.birthday}}</td>
+                <td>{{getDepartament(worker.departament)}}</td>
+                <td>
+                    <button class="btn btn-outline-primary mr-2" (click)="onEditProfile(worker.id)">Edit</button>
+                    <button class="btn btn-outline-danger" (click)="onDeleteProfile(worker.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
